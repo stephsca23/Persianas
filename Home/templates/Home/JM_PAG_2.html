@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
+    <link rel="stylesheet" href="/static/Home/CSS/JM_PAG_2.CSS">
+
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;700&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <title>SALAS</title>
+</head>
+<body id="bg">
+ 
+ 
+    <nav class="navbar navbar-expand-lg navbar-dark ">
+        <!-- <a href="#" class="logo">
+            <img src="/static/Home/img/logo jm.png" alt="/imagenes/logo jm.png" />
+          </a> -->
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNavDropdown">
+          <ul class="navbar-nav">
+            <li class="nav-item active">
+              <a class="nav-link" href="{% url 'index' %}">Home <span class="sr-only">(current)</span></a>
+            </li>
+            
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  Persianas 
+                </a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                  <a class="dropdown-item" href="#">Recámara</a>
+                  <a class="dropdown-item" href="#">Sala</a>
+                  
+                </div>
+              </li>
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                Servicios 
+              </a>
+              <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                <a class="dropdown-item" href="#">Toma de medidas</a>
+                <a class="dropdown-item" href="#">Instalación</a>
+                <a class="dropdown-item" href="#">Reparación</a>
+                
+
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Promociones</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="#">Contacto</a>
+                  </li>
+                    <div class ="login">
+                    {% if user %}
+                    <a href="#">{{ user.username }}</a>
+                    <a href="/logout/">Logout</a>
+                    {% else %}
+                    <a href="/login/">Login</a>
+                    <a href="">Sign in</a>
+                    {% endif %}
+                  </div>
+                 
+              </div>
+            </li>
+          </ul>
+        </div>
+      </nav>
+
+      <h2 class="major">Persianas para sala</h2>
+
+    {% for persiana in modelos %} 
+
+
+
+      <div class="card-deck">
+        <div class="card">
+          <img src="/static/Home/img/{{ persiana.img }}" class="card-img-top" alt="{{ persiana.nombre }}" />
+          <div class="card-body">
+            <h5 class="card-title">{{ persiana.nombre }}</h5>
+            <p class="card-text">Precio: {{ persiana.precio }}</p>
+           
+            <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#CollapseVenDes{{ forloop.counter }}" aria-expanded="false" aria-controls="multiCollapseExample{{ forloop.counter }}"> Ventajas </button>
+         
+            <button type="button" class="btn btn-secondary btn-cotizar" data-target="#modal{{ forloop.counter }}"> Cotizar</button>
+         </div><!-- termina card-body -->
+        </div><!-- termina card -->
+      </div><!-- termina card-deck -->
+
+      <div id="modal{{ forloop.counter }}" class="modal">
+        <span class="close">&times;</span>
+        <img class="modal-content" src="/static/Home/img/{{ persiana.img }}"/>
+        <div class="form-row mt-2 justify-content-center">
+          <div class="col-2">
+            <input type="text" name="ancho" placeholder="Ancho" class="form-control">
+          </div>
+          <div class="col-2">
+            <input type="text" name="alto" placeholder="Alto" class="form-control">
+          </div>
+          <div class="col-auto">
+            <button class="btn btn-primary btn-calcular" data-target="#costo{{ forloop.counter }}" data-precio="{{ persiana.precio }}">Cotizar</button>
+          </div>
+        </div>
+        <div class="form-row mt-2 justify-content-center ">
+          <label class="col-form-label text-white" for="costo{{ forloop.counter }}">Costo: $</label>
+          <div class="col-2">
+            <input id="costo{{ forloop.counter }}" type="text" value="0.0" class="form-control" readonly>
+          </div>
+        </div>
+      </div>
+
+      <div class="collapse multi-collapse" id="CollapseVenDes{{ forloop.counter }}">
+        <div class="row">
+          <div class="col col-primary m-4">
+            <div class="card card-body">
+                {{persiana.ventajas}}
+            </div>
+          </div>
+          <div class="col col-primary m-4">
+            <div class="card card-body">
+               <!--  {{persiana.desventajas}} -->
+            </div>
+          </div>
+        </div><!-- termina row -->
+      </div><!-- termina collapse -->
+    {% endfor %}
+
+    
+
+
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-Piv4xVNRyMGpqkS2by6br4gNJ7DXjqk09RmUpJ8jgGtD7zP9yug3goQfGII0yAns" crossorigin="anonymous"></script>
+
+<script>
+  let closeButtons = document.querySelectorAll('.close')
+  let buttons = document.querySelectorAll('.btn-cotizar')
+
+  buttons.forEach(
+      function(button, index, array) {
+        button.addEventListener('click', function (){
+            let modal = document.querySelector(button.dataset.target)
+            modal.style.display = 'block'
+        })
+      }
+  )
+  closeButtons.forEach(
+      function(closeButton, index, array) {
+          closeButton.addEventListener('click', function (){
+              let modal = this.parentElement
+              modal.style.display = 'none'
+          })
+      }
+  )
+</script>
+<script>
+  let buttons_calc = document.querySelectorAll('.btn-calcular')
+  buttons_calc.forEach(
+      function(button_calc, index, array) {
+        button_calc.addEventListener('click', () => {
+          const div = button_calc.parentElement.parentElement
+          const ancho = div.querySelector('[name="ancho"]').value;
+          const alto = div.querySelector ('[name="alto"').value;
+          let precio = button_calc.dataset.precio
+          let input_target_id = button_calc.dataset.target
+          let input_target = document.querySelector(input_target_id)
+
+          let r = (precio*ancho*alto)
+
+          input_target.value = r;
+        } )
+      }
+  )
+</script>
+
+ </body>
+</html>

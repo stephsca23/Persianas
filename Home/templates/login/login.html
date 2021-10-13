@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/static/Home/CSS/login.css">
+    <title>Login</title>
+</head>
+<body>
+
+    <article id="contact">
+        <h2 class="major">Login</h2>
+        
+            <div class="fields">
+                <div>
+                    {% if msg %}
+                     <aside class="text-center">
+                     {{ msg }}
+                    </aside>
+                    {% endif %}
+
+            <form method="post">
+                {% csrf_token %}
+                <div class="field half">
+                
+                Usuario: <input type="text" name="username" value="">
+                Password: <input type="password" name="password" value="">
+                    
+             
+
+              {% if next %}
+              <input type="hidden" name="next" value="{{ next }}" />
+              {% else %}
+              <input type="hidden" name="next" value="/" />
+              {% endif %}
+
+             
+
+
+
+            <ul class="actions">
+                <li><input type="submit" value="Login" class="primary" /></li>
+                <!-- <li><input type="reset" value="Crear cuenta" /></li> -->
+                <a href="{% url 'Crear_Contacto' %}" class="button">Crear cuenta</a>
+          
+            </ul>
+
+            <ul>  <a href="https://html5up.net">¿Olvidaste tu contraseña?</a> </ul>
+        </form>
+             <div>
+              </div>
+    </article>
+
+    
+</body>
+</html>
+    

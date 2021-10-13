@@ -1,0 +1,151 @@
+<!DOCTYPE HTML>
+<!--
+	Dimension by HTML5 UP
+	html5up.net | @ajlkn
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+	<head>
+		<title>JM PERSIANAS</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<link rel="stylesheet" href="/static/Home/CSS/main.css" />
+		<noscript><link rel="stylesheet" href="/static/Home/css/noscript.css" /></noscript>
+		
+	</head>
+	<body class="is-preload">
+		
+
+		<!-- Wrapper -->
+			<div id="wrapper">
+
+				<!-- Header -->
+					<header id="header">
+						<div class="logo">
+							
+							<h1> JM</h1>
+							
+							</div>
+						<div class="content">
+							<div class="inner">
+								<h1>PERSIANAS</h1>
+								<p>Encuentra aquí la persiana indicada para ti</p>
+							</div>
+						</div>
+						<nav>
+							<ul>
+								<li><a href="#intro">Persianas</a></li>
+								<li><a href="#work">Promociones</a></li>
+								<li><a href="#about"> Servicios</a></li>
+								<li><a href="{% url 'login' %}">Registro/ Login</a></li>
+
+								<!--<li><a href="#elements">Elements</a></li>-->
+							</ul>
+						</nav>
+					</header>
+
+				<!-- Main -->
+					<div id="main">
+
+						<!-- Intro -->
+							<article id="intro">
+								<h2 class="major">Persianas</h2>
+								<span class="image main"><img src="/static/Home/images/portada1.png" alt="" /></span>
+								<p>Encuentra la persiana para tu espacio preferido</p>
+									<form method="post" action="#">
+
+
+										 {% for home in categorias %} 
+										
+										<ul class="actions">
+											
+												
+										
+											<a href="{% url 'JM_PAG_2' %}" class="button">{{ home.nombre }}</a>
+											<!-- <li><input type="reset" value="Recámara" /></li>
+											<li><input type="reset" value="Estudio" /></li>
+											<li><input type="reset" value="Sala de tv" /></li>
+											 -->
+										
+										</ul>
+
+										{% endfor %}
+										
+									</form>
+								</article>
+								
+								
+							</article>
+
+							
+
+
+							
+
+						<!-- Work -->
+							
+							<!-- <article id="work">
+								
+								<h2 class="major">Promociones</h2>
+								<span class="image main"><img src="images/pic02.jpg" alt="" /></span>
+								<p>Adipiscing magna sed dolor elit. Praesent eleifend dignissim arcu, at eleifend sapien imperdiet ac. Aliquam erat volutpat. Praesent urna nisi, fringila lorem et vehicula lacinia quam. Integer sollicitudin mauris nec lorem luctus ultrices.</p>
+								
+							</article> -->
+
+						<!-- About -->
+
+							
+
+							<article id="about">
+								<h2 class="major">Servicios</h2>
+								<span class="image main"><img src="/static/Home/images/portada2.png" alt="" /></span>
+								<p> {{ modal.descripcion }}</p>
+								<form method="post" action="#">
+
+
+										{% for servicio in servicios %}
+									
+									<ul class="actions">
+										<a href="#" class="button">{{ servicio.nombre }}</a>
+										<!-- <li><input type="reset" value="Instalación" /></li>
+										<li><input type="reset" value="Reparación" /></li> -->
+
+
+										
+									
+									</ul>
+
+									{% endfor %}
+
+
+									<ul>  <a href="https://html5up.net">¿Quieres asistencia personalizada?</a> </ul>
+								</form>
+							</article>
+							</article>
+
+						
+
+					
+
+					</div>
+
+				<!-- Footer -->
+					<footer id="footer">
+						<p class="copyright">&copy;  JM Persianas  <a></a>2021 </a></p>
+					</footer>
+					
+
+			</div>
+
+		<!-- BG -->
+			<div id="bg"></div>
+
+		<!-- Scripts -->
+			<script src="/static/Home/js/jquery.min.js"></script>
+			<script src="/static/Home/js/browser.min.js"></script>
+			<script src="/static/Home/js/breakpoints.min.js"></script>
+			<script src="/static/Home/js/util.js"></script>
+			<script src="/static/Home/js/main.js"></script>
+			
+	</body>
+</html>

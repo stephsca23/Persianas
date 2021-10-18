@@ -14,15 +14,20 @@ def index(request):
       
       return render (request, "home1/index.html", {"categorias":tipos, "servicios": servicios})
 
+@login_required()
+def JM_PAG_2( request):
+   modelos = Modelo.objects.filter(habitacion__nombre = "sala")
+   return render (request, "hHome/JM_PAG_2.html", {"modelos": modelos})
+
 
 @login_required()
-def JM_PAG_2 (request):
+def modelos_categoria (request, id_categoria):
 	# return render(request, "Home/JM_PAG_2.html")
 
 # Create your views here.
-
-		modelos = Modelo.objects.filter(habitacion__nombre = "sala")
-		return render (request, "Home/JM_PAG_2.html", {"modelos":modelos})
+   categoria = Categoria.objects.get(pk=id_categoria)
+   modelos = Modelo.objects.filter(habitacion=categoria)
+   return render (request, "Home/JM_PAG_2.html", {"modelos":modelos, "categoria": categoria})
 
 def Crear_Contacto (request):
 

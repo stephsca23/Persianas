@@ -19,8 +19,9 @@ from . import views
 
 urlpatterns = [
         path('', views.index, name="index"),
-        path('JM_PAG_2/', views.JM_PAG_2, name="JM_PAG_2"),
-    path("login/", auth_views.LoginView.as_view(template_name="login/login.html"),name="login"), 
+        path('JM_PAG_2/', views.JM_PAG_2, name= "JM_PAG_2"),
+        path('modelos/<int:id_categoria>/', views.modelos_categoria, name="modelos.categoria"),
+        path("login/", auth_views.LoginView.as_view(template_name="login/login.html"),name="login"), 
         path('Crear_Contacto/', views.Crear_Contacto, name="Crear_Contacto")       
 ]
 

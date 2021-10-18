@@ -55,21 +55,21 @@
 									<form method="post" action="#">
 
 
-										 {% for home in categorias %} 
+										
 										
 										<ul class="actions">
 											
-												
+											{% for home in categorias %} 
 										
-											<a href="{% url 'JM_PAG_2' %}" class="button">{{ home.nombre }}</a>
+											<li><a href="/modelos/{{home.id}}/" class="button">{{ home.nombre }}</a></li>
 											<!-- <li><input type="reset" value="Recámara" /></li>
 											<li><input type="reset" value="Estudio" /></li>
 											<li><input type="reset" value="Sala de tv" /></li>
 											 -->
-										
+											{% endfor %}
 										</ul>
 
-										{% endfor %}
+										
 										
 									</form>
 								</article>

@@ -458,6 +458,7 @@ input, select, textarea {
 	input[type="email"],
 	select {
 		height: 2.75rem;
+		width: 5rem;
 	}
 
 	textarea {
@@ -1346,7 +1347,7 @@ input, select, textarea {
 			display: flex;
 			margin-bottom: 70px;
 			list-style: none;
-			padding-left: 60px;
+			padding-left: 0px;
 			border: solid 1px #ffffff;
 			border-radius: 4px;
 		}

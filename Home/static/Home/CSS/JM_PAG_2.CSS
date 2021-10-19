@@ -411,7 +411,7 @@ input, select, textarea {
 		outline: 0;
 		padding: 0 1rem;
 		text-decoration: none;
-		width: 100%;
+		
 	}
 
 		input[type="text"]:invalid,
@@ -1678,11 +1678,42 @@ background-color: transparent;
   cursor: pointer;
 }
 
+.costo {
+	background-color: transparent;
+	
+	
+}
 
+.forma {
+	width: 100%;
+	
+}
 
 @media screen and (max-width: 480px){
 	.card-deck button{
 	font-size: 10px;
 	width: 30%;
+
+	
 }	
+@media screen and (max-width: 480px){
+.forma {
+	width: 110%;
+	
+}
+}
+@media screen and (max-width: 480px){
+	.costo {
+		margin-left: 0px;
+		
+	}
+}
+
+@media screen and (max-width: 480px){
+	.col-form-label {
+		margin-left: -90px;
+		
+	}
+}
+	
 }

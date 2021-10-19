@@ -95,10 +95,10 @@
         <img class="modal-content" src="/static/Home/img/{{ persiana.img }}"/>
         <div class="form-row mt-2 justify-content-center">
           <div class="col-2">
-            <input type="text" name="ancho" placeholder="Ancho" class="form-control">
+            <input type="text" name="ancho" placeholder="Ancho" class="forma">
           </div>
           <div class="col-2">
-            <input type="text" name="alto" placeholder="Alto" class="form-control">
+            <input type="text" name="alto" placeholder="Alto" class="forma">
           </div>
           <div class="col-auto">
             <button class="btn btn-primary btn-calcular" data-target="#costo{{ forloop.counter }}" data-precio="{{ persiana.precio }}">Cotizar</button>
@@ -107,7 +107,7 @@
         <div class="form-row mt-2 justify-content-center ">
           <label class="col-form-label text-white" for="costo{{ forloop.counter }}">Costo: $</label>
           <div class="col-2">
-            <input id="costo{{ forloop.counter }}" type="text" value="0.0" class="form-control" readonly>
+            <input id="costo{{ forloop.counter }}" type="text" value="0.0" class="costo" readonly>
           </div>
         </div>
       </div>

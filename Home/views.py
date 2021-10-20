@@ -1,3 +1,4 @@
+from django.contrib.auth import authenticate, logout
 from django.contrib.auth.decorators import login_required
 from django.shortcuts import render, redirect
 from .models import Modelo, Categoria, Servicios
@@ -33,6 +34,8 @@ def Crear_Contacto (request):
 
 
       return render (request, "contacto/Crear_Contacto.html")
+
+
 
 
 class CategoriaViewSet(viewsets.ModelViewSet):

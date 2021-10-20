@@ -33,8 +33,12 @@
                   Persianas 
                 </a>
                 <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                  <a class="dropdown-item" href="#">Recámara</a>
-                  <a class="dropdown-item" href="#">Sala</a>
+                  {% for home in categorias %} 
+
+
+                  <a class="dropdown-item" href="/modelos/{{home.id}}/">{{ home.nombre }}</a>
+                 <!--  <a class="dropdown-item" href="{% url 'index' %}">Sala</a> -->
+                  {% endfor %}
                   
                 </div>
               </li>

@@ -28,7 +28,8 @@ def modelos_categoria (request, id_categoria):
 # Create your views here.
    categoria = Categoria.objects.get(pk=id_categoria)
    modelos = Modelo.objects.filter(habitacion=categoria)
-   return render (request, "Home/JM_PAG_2.html", {"modelos":modelos, "categoria": categoria})
+   tipos = Categoria.objects.all()
+   return render (request, "Home/JM_PAG_2.html", {"modelos":modelos, "categoria": categoria, "categorias":tipos})
 
 def Crear_Contacto (request):
 

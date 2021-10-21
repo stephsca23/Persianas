@@ -18,7 +18,7 @@ def index(request):
 @login_required()
 def JM_PAG_2( request):
    modelos = Modelo.objects.filter(habitacion__nombre = "sala")
-   return render (request, "hHome/JM_PAG_2.html", {"modelos": modelos})
+   return render (request, "Home/JM_PAG_2.html", {"modelos": modelos})
 
 
 @login_required()
@@ -35,6 +35,11 @@ def Crear_Contacto (request):
 
 
       return render (request, "contacto/Crear_Contacto.html")
+
+
+def toma_medidas (request):
+   tipos = Categoria.objects.all()
+   return render (request, "medidas/toma_medidas.html", {"categorias":tipos})
 
 
 
